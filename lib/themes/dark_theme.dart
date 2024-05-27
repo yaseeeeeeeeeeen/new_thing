@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:new_thing_on_flutter/themes/color_theme.dart';
 
 final ThemeData darkTheme = ThemeData(
+  listTileTheme: const ListTileThemeData(textColor: Colors.white),
+  fontFamily: "Poppins",
   brightness: Brightness.dark,
-  primaryColor: Colors.teal,
+  primaryColor: ColorThemeData.mainColor,
 //  accentColor: Colors.tealAccent,
   // Define other dark theme properties as needed
   scaffoldBackgroundColor: Colors.black,
-  appBarTheme: const AppBarTheme(
-    color: Colors.teal,
+  appBarTheme: AppBarTheme(
+    color: Colors.green.shade800,
   ),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(color: Colors.white),
