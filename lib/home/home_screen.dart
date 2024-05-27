@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_thing_on_flutter/themes/color_theme.dart';
+import 'package:new_thing_on_flutter/web_view/web_view_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,18 +22,33 @@ class _HomeScreenView extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: ColorThemeData.mainColor.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10)),
-              child: const ListTile(
-                subtitle: Text("Tap to check webview"),
-                title: Text("WEB VIEW"),
-                trailing: Icon(Icons.arrow_forward),
-              ),
+            customTile(
+              title: "WEB VIEW",
+              subTitle: "Tap to Check WebView",
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const WebViewScreen()));
+              },
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Container customTile(
+      {required String title,
+      required String subTitle,
+      required void Function()? onTap}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: ColorThemeData.mainColor,
+          borderRadius: BorderRadius.circular(10)),
+      child: ListTile(
+        onTap: onTap,
+        title: Text(title),
+        subtitle: Text(subTitle),
+        trailing: const Icon(Icons.arrow_forward),
       ),
     );
   }

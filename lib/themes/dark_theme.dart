@@ -10,7 +10,8 @@ final ThemeData darkTheme = ThemeData(
   // Define other dark theme properties as needed
   scaffoldBackgroundColor: Colors.black,
   appBarTheme: AppBarTheme(
-    color: Colors.green.shade800,
+    centerTitle: true,
+    color: ColorThemeData.mainColor,
   ),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(color: Colors.white),
