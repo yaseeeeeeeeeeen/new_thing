@@ -7,13 +7,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const _HomeScreenView();
+    return _HomeScreenView();
   }
 }
 
 class _HomeScreenView extends StatelessWidget {
-  const _HomeScreenView();
-
+  _HomeScreenView();
+  final TextEditingController webLinkController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +23,8 @@ class _HomeScreenView extends StatelessWidget {
         child: Column(
           children: [
             customTile(
+              hintText: "Enter Web Link here.",
+              controller: webLinkController,
               title: "WEB VIEW",
               subTitle: "Tap to Check WebView",
               onTap: () {
@@ -39,13 +41,27 @@ class _HomeScreenView extends StatelessWidget {
   Container customTile(
       {required String title,
       required String subTitle,
+      required TextEditingController controller,
+      required String hintText,
       required void Function()? onTap}) {
     return Container(
       decoration: BoxDecoration(
           color: ColorThemeData.mainColor,
           borderRadius: BorderRadius.circular(10)),
-      child: ListTile(
-        onTap: onTap,
+      child: ExpansionTile(
+        backgroundColor: ColorThemeData.mainColor,
+        children: [
+          CustomTextField(
+            controller: controller,
+            hintText: hintText,
+          ),
+          Container(
+              margin: EdgeInsets.all(8),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("SUBMIT"),
+              ))
+        ],
         title: Text(title),
         subtitle: Text(subTitle),
         trailing: const Icon(Icons.arrow_forward),
@@ -53,3 +69,40 @@ class _HomeScreenView extends StatelessWidget {
     );
   }
 }
+
+class CustomTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hintText;
+
+  CustomTextField({
+    required this.controller,
+    required this.hintText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(8, 0, 8, 5),
+      padding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
+      decoration: BoxDecoration(
+        color: Colors.grey[200], // Change color as desired
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(color: Colors.black),
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+      ),
+    );
+  }
+}
+
+// Example usage:
+// CustomTextField(
+//   controller: TextEditingController(),
+//   hintText: 'Enter your text',
+// )

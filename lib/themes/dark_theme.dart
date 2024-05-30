@@ -14,9 +14,16 @@ final ThemeData darkTheme = ThemeData(
     color: ColorThemeData.mainColor,
   ),
   textTheme: const TextTheme(
-    bodyLarge: TextStyle(color: Colors.white),
-    bodyMedium: TextStyle(color: Colors.white70),
+    bodyLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+    bodyMedium: TextStyle(color: Colors.white70, fontWeight: FontWeight.w500),
     // Define other text styles as needed
   ),
   // Customize other properties like button themes, input decoration themes, etc.
+  elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+          textStyle: TextStyle(color: Colors.white),
+          backgroundColor: Colors.black,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          fixedSize: Size(double.maxFinite, 50))),
 );

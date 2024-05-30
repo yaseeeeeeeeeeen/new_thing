@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class ColorThemeData {
-  static Color mainColor = Color.fromARGB(255, 209, 1, 174).withOpacity(0.7);
+  static Color mainColor = Color.fromARGB(255, 0, 128, 0).withOpacity(0.7);
 }
